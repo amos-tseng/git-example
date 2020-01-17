@@ -1,0 +1,29 @@
+{% block title %}{% endblock %}
+
+{% block body %}
+        <ul class="navigation">
+            <li><a href="{{ path('Board_homepage') }}">返回</a></li>
+        </ul>
+<h3>下方時間為該用戶最後一次留言</h3>
+ {% for user in users %}
+    <article>
+
+<form action="modify.php" name="mod" method="post">
+
+  <table border="1">
+      <tr>
+           <td><h2>{{ user.id }}</h2></td>
+           <td> <h2>{{ user.user }}</h2></td>
+      </tr>
+      <tr>
+           <td colspan="2" > <h3>{{ user.lasttime|date('m-d H:i:s')  }} </h3></td>
+      </tr>
+  </table>
+
+</form>
+
+    </article>
+ {% else %}
+        <p>There are no message </p>
+    {% endfor %}
+{% endblock %}

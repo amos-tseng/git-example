@@ -1,0 +1,25 @@
+#board/boardBundle/Resources/config
+Board_homepage:
+    path:  /board
+    defaults: { _controller: BoardBundle:Default:index }
+
+BoardBundle_contact:
+    path:  /contact
+    defaults: { _controller: BoardBundle:Default:contact }
+    requirements:
+       _method:  GET|POST
+BoardBundle_board:
+    pattern:  /show
+    defaults: { _controller: BoardBundle:Default:show }
+    requirements:
+        _method:  GET
+BoardBundle_modify:
+    pattern:  /modify
+    defaults: { _controller: BoardBundle:Default:modify }
+    requirements:
+        _method:  GET|POST
+BoardBundle_mod:
+    pattern:  /mod
+    defaults: { _controller: BoardBundle:Default:mod }
+    requirements:
+        _method:  GET|POST

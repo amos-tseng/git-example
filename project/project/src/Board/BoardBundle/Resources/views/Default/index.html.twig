@@ -1,0 +1,44 @@
+{% block navigation %}
+ <H1>歡迎來到留言板</H1>
+    <nav>
+        <ul class="navigation">
+            <li><a href="{{ path('BoardBundle_contact') }}">進入留言</a></li>
+        </ul>
+        <ul class="navigation">
+            <li><a href="{{ path('BoardBundle_board') }}">使用者</a></li>
+        </ul>
+
+    </nav>
+{% for board in boards %}
+    <article>
+
+<form action="{{ path('BoardBundle_modify') }}" name="mod" method="post">
+
+  <table border="1">
+      <tr>
+          <td> <h3>留言人:{{ board.name }}</h3></td>
+          <td><h4>{{ board.updateTime|date('m-d H:i:s') }}</h4></td>
+      </tr>
+      <tr>
+           <td colspan="2" > <h3>標題:{{ board.title }} </h3></td>
+      </tr>
+      <tr>
+           <td colspan="2"  width="200px" > <p>內容:</br>{{ board.message }}</p></td>
+      </tr>
+      <td>
+            <input type="hidden" name="id" value="{{ board.id }}">
+            <input type="submit" name="action" value="刪除">
+            <input type="submit" name="action" value="修改">
+      </td>
+  </table>
+
+</form>
+
+    </article>
+ {% else %}
+        <p>There are no message </p>
+    {% endfor %}
+
+
+
+{% endblock %}
