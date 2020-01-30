@@ -3,6 +3,7 @@
 namespace Board\BoardBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 
 /**
@@ -19,11 +20,10 @@ class Board
     protected $id;
 
     /**
-     *  @ORM\ManyToOne(targetEntity="User", inversedBy="user")  
-     *  @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     *  @ORM\Column(name="name", type="string", length=40, nullable=FALSE)
+     *   @ORM\ManyToOne(targetEntity="User", inversedBy="user")
+     *   @ORM\JoinColumn(name="name_id")
      */
-    protected $name;
+    protected $user;
 
     /**
      * 
@@ -46,7 +46,40 @@ class Board
      */
     protected $updateTime;
 
+   
+     public function __construct()
+    {
+         $this->user = new ArrayCollection();
+         
+    }
 
+    //public function __toString() 
+    //{
+    //   return  $this->getUser();
+    //} 
+
+    /**
+     * Get name_id
+     *
+     * @return integer 
+     */
+    public function getName_Id()
+    {
+        return $this->name_id;
+    }
+
+    /**
+     * Set name_id
+     *
+     * @param integer nameid
+     * @return Board
+     */
+    public function setName_Id($name_id)
+    {
+        $this->name_id = $name_id;
+
+        return $this;
+    }
 
     /**
      * Get id
@@ -59,26 +92,26 @@ class Board
     }
 
     /**
-     * Set name
+     * Set user1
      *
-     * @param string $name
+     * @param string $user1
      * @return Board
      */
-    public function setName($name)
+    public function setUser($user)
     {
-        $this->name = $name;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get user1
      *
      * @return string 
      */
-    public function getName()
+    public function getUser()
     {
-        return $this->name;
+        return $this->user;
     }
 
     /**

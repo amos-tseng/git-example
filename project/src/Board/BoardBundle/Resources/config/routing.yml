@@ -23,3 +23,7 @@ BoardBundle_mod:
     defaults: { _controller: BoardBundle:Default:mod }
     requirements:
         _method:  GET|POST
+BoardBundle_one:
+    pattern:  /one
+    defaults: { _controller: BoardBundle:Default:one }
+    

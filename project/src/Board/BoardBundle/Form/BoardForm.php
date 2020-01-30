@@ -11,7 +11,7 @@ class BoardForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name');
+        $builder->add('user');
         $builder->add('title');
         $builder->add('message','textarea');
     }

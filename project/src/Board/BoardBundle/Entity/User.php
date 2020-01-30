@@ -4,7 +4,7 @@ namespace Board\BoardBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-
+use Board\BoardBundle\Repository\UserRepository;
 /**
  *@ORM\Entity
  *@ORM\Table(name="user")
@@ -20,10 +20,10 @@ class User
 
     /**
      *  
-     *  @ORM\OneToMany(targetEntity="Board", mappedBy="name")
-     *  @ORM\Column(name="user", type="string", length=40, nullable=FALSE , unique=true)
+     *  @ORM\OneToMany(targetEntity="Board", mappedBy="user")
+     *  @ORM\Column(name="users", type="string", length=40, nullable=FALSE , unique=true) 
      */
-    protected $user;
+    private $users;
 
     /**
      * 
@@ -31,14 +31,18 @@ class User
      *  @ORM\Column(name="lasttime", type="datetime")
      */
     protected $lasttime;
-    
-   
+     
+     
     public function __construct()
     {
-        $this->user = new ArrayCollection();
+         $this->users = new ArrayCollection();
+         
     }
 
-    
+    public function __toString() 
+    {
+       return  $this->getUsers();
+    } 
     /**
      * Get id
      *
@@ -50,33 +54,33 @@ class User
     }
 
     /**
-     * Set name
+     * Set users
      *
-     * @param string $name
-     * @return User
+     * @param string $users
+     * @return Users
      */
-    public function setUser($user)
+    public function setUsers($users)
     {
-        $this->user = $user;
+        $this->users = $users;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get users
      *
      * @return string 
      */
-    public function getUser()
+    public function getUsers()
     {
-        return $this->user;
+        return $this->users;
     }
   
     /**
      * Set lasttime
      *
      * @param \DateTime $lasttime
-     * @return User
+     * @return Users
      */
     public function setLasttime($lasttime)
     {
